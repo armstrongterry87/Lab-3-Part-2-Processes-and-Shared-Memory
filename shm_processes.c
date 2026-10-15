@@ -73,7 +73,7 @@ void  DadProcess(int  SharedMem[])
           sleep(rand() % 6);
           account = *BankAccount;
           while (*Turn != 0)
-               ;   /* no-op */
+               usleep(1000);   /* no-op: yield the CPU briefly while waiting for our turn */
           account = *BankAccount;   /* re-read now that it is our turn */
 
           if (account <= 100) {
@@ -108,7 +108,7 @@ void  StudentProcess(int  SharedMem[])
           sleep(rand() % 6);
           account = *BankAccount;
           while (*Turn != 1)
-               ;   /* no-op */
+               usleep(1000);   /* no-op: yield the CPU briefly while waiting for our turn */
           account = *BankAccount;   /* re-read now that it is our turn */
 
           balance = rand() % 51;
